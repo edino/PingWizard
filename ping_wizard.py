@@ -30,7 +30,7 @@ def ping(destination, count, size, interval):
 def main():
     print("\nWelcome to the Ping Python Script!")
 
-    destination = get_user_input("\nEnter the IP Address or hostname to ping", "example.com" "or" "8.8.8.8""")
+    destination = get_user_input("\nEnter the IP Address or hostname to ping", "example.com" " or " "8.8.8.8""")
     count = get_user_input("\nEnter the number of packets to send", "4")
     size = get_user_input("\nEnter the size of each packet in bytes", "64")
     interval = get_user_input("\nEnter the interval between packets in seconds", "1")
