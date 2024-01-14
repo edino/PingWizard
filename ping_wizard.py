@@ -28,7 +28,7 @@ def ping(destination, count, size, interval):
     subprocess.run(command, shell=True, check=True)
 
 def main():
-    print("\nWelcome to the Ping Python Script!")
+    print("\nWelcome to the Ping Wizard Python Script!")
 
     destination = get_user_input("\nEnter the IP Address or hostname to ping: ")
     count = get_user_input("\nEnter the number of packets to send: ")
