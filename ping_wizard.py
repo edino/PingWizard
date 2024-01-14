@@ -7,7 +7,7 @@
 
 #Purpose: The purpose of the script is to simplify the process of conducting ping tests by providing a user-friendly interface. Users can easily input the desired parameters for the ping command, and the script takes care of executing the command and displaying the results. It aims to make the ping testing process accessible and customizable for users.
 
-# BuildDate: 6:24 PM EST 2024-01-13
+# BuildDate: 1:29 AM EST 2024-01-14
 
 # A simple way to execute this script is using the following command: curl -s https://raw.githubusercontent.com/edino/TCPFlagsSender/main/ping_wizard.py | python3 -
 
