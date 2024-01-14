@@ -9,7 +9,7 @@
 
 # BuildDate: 1:29 AM EST 2024-01-14
 
-# A simple way to execute this script is using the following command: curl -s https://raw.githubusercontent.com/edino/TCPFlagsSender/main/ping_wizard.py | python3 -
+# A simple way to execute this script is using the following command: curl -s https://raw.githubusercontent.com/edino/PingWizard/main/ping_wizard.py | python3 -
 
 import subprocess
 import sys
