@@ -11,6 +11,8 @@
 
 # A simple way to execute this script is using the following command: curl -s https://raw.githubusercontent.com/edino/PingWizard/main/ping_wizard.py | python3 -
 
+# Another way to execute this is script: curl -Lo /tmp/ping_wizard.py https://raw.githubusercontent.com/edino/PingWizard/main/ping_wizard.py && python3 /tmp/ping_wizard.py
+
 import subprocess
 import sys
 
