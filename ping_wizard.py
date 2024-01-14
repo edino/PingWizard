@@ -9,21 +9,26 @@
 
 # BuildDate: 6:24 PM EST 2024-01-13
 
-# A simple way to execute this script is using the following command: curl -s -o /tmp/ping_wizard.py https://raw.githubusercontent.com/edino/PingWizard/main/ping_wizard.py && python3 /tmp/ping_wizard.py
+# A simple way to execute this script is using the following command: curl -s https://raw.githubusercontent.com/edino/TCPFlagsSender/main/ping_wizard.py | python3 -
 
 import subprocess
+import sys
 
 def get_user_input(prompt, example):
     return input(f"{prompt} (e.g., {example}): ")
 
 def ping(destination, count, size, interval):
     command = f"ping -c {count} -s {size} -i {interval} {destination}"
-    subprocess.run(command, shell=True)
+    try:
+        subprocess.run(command, shell=True, check=True)
+    except subprocess.CalledProcessError:
+        print("\nPing interrupted. Script execution terminated.")
+        sys.exit(0)
 
 def main():
     print("\nWelcome to the Ping Python Script!")
 
-    destination = get_user_input("\nEnter the IP Address or hostname to ping", "example.com" " or " "8.8.8.8")
+    destination = get_user_input("\nEnter the IP Address or hostname to ping", "example.com" "or" "8.8.8.8""")
     count = get_user_input("\nEnter the number of packets to send", "4")
     size = get_user_input("\nEnter the size of each packet in bytes", "64")
     interval = get_user_input("\nEnter the interval between packets in seconds", "1")
