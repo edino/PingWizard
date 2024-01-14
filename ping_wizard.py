@@ -25,7 +25,11 @@ def get_user_input(prompt):
 
 def ping(destination, count, size, interval):
     command = f"ping -c {count} -s {size} -i {interval} {destination}"
-    subprocess.run(command, shell=True, check=True)
+    try:
+        subprocess.run(command, shell=True, check=True)
+    except KeyboardInterrupt:
+        print("\nPing operation interrupted.")
+        sys.exit(0)
 
 def main():
     print("\nWelcome to the Ping Wizard Python Script!")
@@ -38,4 +42,9 @@ def main():
     ping(destination, count, size, interval)
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\nScript execution terminated.")
+        sys.exit(0)
+
