@@ -19,41 +19,21 @@ import sys
 def get_user_input(prompt):
     try:
         return input(prompt)
-    except EOFError:
-        return None
-    except KeyboardInterrupt:
-        return None
+    except (EOFError, KeyboardInterrupt):
+        print("\nScript execution terminated.")
+        sys.exit(0)
 
 def ping(destination, count, size, interval):
     command = f"ping -c {count} -s {size} -i {interval} {destination}"
-    try:
-        subprocess.run(command, shell=True, check=True)
-    except subprocess.CalledProcessError:
-        print("\nPing interrupted. Script execution terminated.")
-        sys.exit(0)
+    subprocess.run(command, shell=True, check=True)
 
 def main():
     print("\nWelcome to the Ping Python Script!")
 
     destination = get_user_input("\nEnter the IP Address or hostname to ping: ")
-    if destination is None:
-        print("\nScript execution terminated.")
-        sys.exit(0)
-
     count = get_user_input("\nEnter the number of packets to send: ")
-    if count is None:
-        print("\nScript execution terminated.")
-        sys.exit(0)
-
     size = get_user_input("\nEnter the size of each packet in bytes: ")
-    if size is None:
-        print("\nScript execution terminated.")
-        sys.exit(0)
-
     interval = get_user_input("\nEnter the interval between packets in seconds: ")
-    if interval is None:
-        print("\nScript execution terminated.")
-        sys.exit(0)
 
     ping(destination, count, size, interval)
 
