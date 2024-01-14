@@ -16,8 +16,13 @@
 import subprocess
 import sys
 
-def get_user_input(prompt, example):
-    return input(f"{prompt} (e.g., {example}): ")
+def get_user_input(prompt):
+    try:
+        return input(prompt)
+    except EOFError:
+        return None
+    except KeyboardInterrupt:
+        return None
 
 def ping(destination, count, size, interval):
     command = f"ping -c {count} -s {size} -i {interval} {destination}"
@@ -30,10 +35,25 @@ def ping(destination, count, size, interval):
 def main():
     print("\nWelcome to the Ping Python Script!")
 
-    destination = get_user_input("\nEnter the IP Address or hostname to ping", "example.com" " or " "8.8.8.8""")
-    count = get_user_input("\nEnter the number of packets to send", "4")
-    size = get_user_input("\nEnter the size of each packet in bytes", "64")
-    interval = get_user_input("\nEnter the interval between packets in seconds", "1")
+    destination = get_user_input("\nEnter the IP Address or hostname to ping: ")
+    if destination is None:
+        print("\nScript execution terminated.")
+        sys.exit(0)
+
+    count = get_user_input("\nEnter the number of packets to send: ")
+    if count is None:
+        print("\nScript execution terminated.")
+        sys.exit(0)
+
+    size = get_user_input("\nEnter the size of each packet in bytes: ")
+    if size is None:
+        print("\nScript execution terminated.")
+        sys.exit(0)
+
+    interval = get_user_input("\nEnter the interval between packets in seconds: ")
+    if interval is None:
+        print("\nScript execution terminated.")
+        sys.exit(0)
 
     ping(destination, count, size, interval)
 
